@@ -215,7 +215,6 @@ class TextToSpeech:
         yield model
 
 
-        # 初期化コードは前回のものと同じなので省略します
 
     def load_cvvp(self):
         """Load CVVP model."""
@@ -271,7 +270,7 @@ class TextToSpeech:
         with torch.no_grad():
             return self.rlg_auto(torch.tensor([0.0])), self.rlg_diffusion(torch.tensor([0.0]))
 
-    def tts_with_preset(self, text, preset='fast', **kwargs):
+    def tts_with_preset(self, text, preset='ultra_fast', **kwargs):
         """
         Calls TTS with one of a set of preset generation parameters. Options:
             'ultra_fast': Produces speech at a speed which belies the name of this repo. (Not really, but it's definitely fastest).
@@ -294,11 +293,8 @@ class TextToSpeech:
         settings.update(kwargs) # allow overriding of preset settings with kwargs
         return self.tts(text, **settings)
 
-    # その他のメソッドがあればここに追加
 
-
-    # 他のメソッドはそのままで、ttsメソッドを以下のように更新します
-
+    
     def tts(self, text, voice_samples=None, conditioning_latents=None, k=1, verbose=True, use_deterministic_seed=None, return_deterministic_state=False,
             num_autoregressive_samples=512, temperature=.8, length_penalty=1, repetition_penalty=2.0, top_p=.8, max_mel_tokens=500,
             cvvp_amount=.0,
@@ -411,10 +407,6 @@ class TextToSpeech:
             else:
                 return res
 
-    # 他のメソッドもここに追加
-
-
-    # 他のメソッドはそのままで、deterministic_stateメソッドを以下のように追加します
 
     def deterministic_state(self, seed=None):
         """
@@ -428,7 +420,7 @@ class TextToSpeech:
 
         return seed
 
-    # 他のメソッド（tts, load_cvvp, get_conditioning_latents, etc.）もここに配置します
+
 
 
     
