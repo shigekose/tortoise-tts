@@ -29,7 +29,7 @@ setuptools.setup(
         'librosa',
         'transformers==4.31.0',
         'tokenizers==0.13.3',
-        'scipy==1.13.1'
+        'scipy==1.14.0'
         'deepspeed==0.14.5',
     ],
     classifiers=[
